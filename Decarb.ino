@@ -8,13 +8,15 @@ Programme Written by Freddy Tay
 Change variable here
 */
 
+//////////////////////////////////////////////////////////////////////
+
 int dist = 8;
 
-// 
+////////////////////////////////////////////////////////////////////// 
 
 // defines pins numbers
-const int trigPin = 9;
-const int echoPin = 10;
+const int trigPin = 4;
+const int echoPin = 3;
 
 // defines variables
 long duration;
@@ -42,7 +44,10 @@ void loop() {
   // Calculating the distance
   distance = duration * 0.034 / 2;
 
-  if(distance > dist) {
+  Serial.print("Distance: ");
+  Serial.println(distance);
+
+  if(distance < dist) {
   digitalWrite(9, HIGH); }
   else {
   digitalWrite(9, LOW); }
