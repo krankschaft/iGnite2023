@@ -10,7 +10,8 @@ Change variable here
 
 //////////////////////////////////////////////////////////////////////
 
-int dist = 8;
+int dist = 16; // in cm
+int delayt = 5; //in seconds
 
 ////////////////////////////////////////////////////////////////////// 
 
@@ -48,7 +49,8 @@ void loop() {
   Serial.println(distance);
 
   if(distance < dist) {
-  digitalWrite(9, HIGH); }
+  digitalWrite(9, HIGH);
+  delay(delayt * 1000);}
   else {
   digitalWrite(9, LOW); }
   
