@@ -12,6 +12,7 @@ Change variable here
 
 int dist = 16; // in cm
 int delayt = 5; //in seconds
+int LEDPin = 11; // enter PIN number that controls the LED
 
 ////////////////////////////////////////////////////////////////////// 
 
@@ -27,6 +28,7 @@ void setup() {
   
   pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output
   pinMode(echoPin, INPUT); // Sets the echoPin as an Input
+  pinMode(LEDPin, OUTPUT); // Sets the LEDPin as an Output
   Serial.begin(9600); // Starts the serial communication
 
   pinMode(9, OUTPUT); // Initialise communication with solenoid valve
@@ -48,10 +50,14 @@ void loop() {
   Serial.print("Distance: ");
   Serial.println(distance);
 
-  if(distance < dist) {
+  if(distance > dist) {
   digitalWrite(9, HIGH);
-  delay(delayt * 1000);}
+  digitalWrite(LEDPin, HIGH);
+  }
   else {
-  digitalWrite(9, LOW); }
+  digitalWrite(9, LOW);
+  digitalWrite(LEDPin, LOW);
+  delay(delayt * 1000);
+  }
   
 }
